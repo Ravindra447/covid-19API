@@ -1,0 +1,1 @@
+module.exports.dbUrl = "mongodb+srv://dguser2:dguser2@dgpaycluster-tcew6.mongodb.net/Covid-19";
