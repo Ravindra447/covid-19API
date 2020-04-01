@@ -14,6 +14,39 @@ const getDataFromDB = async(req, res) => {
     })
 }
 
+const insertPersonInfo = async(req, res) => {
+    await dataService.InsertPersonInfo(req.body, (err, result) => {
+        if (err) console.log(err);
+        if (result) {
+            res.status(200);
+            res.json({ satus: true, msg: "Data Inserted successfully.", result: result })
+        } else {
+            res.status(500);
+            res.json({ satus: false, msg: "Data inserted failed." })
+        }
+    })
+}
+
+const getNearPersonInfo = async(req, res) => {
+    let data = {
+        lat: req.params.lat,
+        lng: req.params.lng,
+        distance: req.params.distance
+    }
+    await dataService.getNearPersonInfo(data, (err, result) => {
+        if (err) console.log(err);
+        if (result) {
+            res.status(200);
+            res.json({ satus: true, msg: "Data retrived successfully.", result: result })
+        } else {
+            res.status(500);
+            res.json({ satus: false, msg: "Data retrived failed." })
+        }
+    })
+}
+
 module.exports = {
-    getDataFromDB: getDataFromDB
+    getDataFromDB: getDataFromDB,
+    insertPersonInfo: insertPersonInfo,
+    getNearPersonInfo: getNearPersonInfo
 }
