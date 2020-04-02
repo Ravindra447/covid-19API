@@ -14,18 +14,18 @@ const GeoSchema = Schema({
 
 const model = mongoose.Schema({
     name: {
-        type: String,
-        required: [true, 'Name field is required']
+        type: String
     },
     mobile: {
-        type: Number,
-        required: [true, 'Mobile field is required']
+        type: Number
     },
     effected: {
         type: Boolean,
         default: false
     },
-    geometry: GeoSchema
+    geometry: GeoSchema,
+    // token: Number,
+    // user_Id: String
 });
 
 const personInfo = mongoose.model("personinfo", model)

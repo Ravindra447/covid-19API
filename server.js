@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
-
+var macaddress = require('macaddress');
 const cors = require('cors')
 const schedular = require('./routes/schedular');
 
@@ -12,11 +12,13 @@ const port = process.env.PORT || 9095;
 const db = require('./config/db');
 
 const path = require('path');
-
+// macaddress.all(function(err, all) {
+//     console.log(JSON.stringify(all, null, 2));
+// });
 app.use(cors(), bodyParser.json(), bodyParser.urlencoded({ extended: false }))
     // app.use(cors());
 
-mongoose.connect(db.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+mongoose.connect(db.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, (err) => {
     if (err) throw err;
     else {
         console.log("Database Created");

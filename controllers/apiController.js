@@ -26,14 +26,13 @@ const insertPersonInfo = async(req, res) => {
         }
     })
 }
-
-const getNearPersonInfo = async(req, res) => {
+const getUserCount = async(req, res) => {
     let data = {
         lat: req.params.lat,
         lng: req.params.lng,
         distance: req.params.distance
     }
-    await dataService.getNearPersonInfo(data, (err, result) => {
+    await dataService.getUserCount((err, result) => {
         if (err) console.log(err);
         if (result) {
             res.status(200);
@@ -45,8 +44,27 @@ const getNearPersonInfo = async(req, res) => {
     })
 }
 
+const getNearPersonInfo = async(req, res) => {
+    let data = {
+        lat: req.params.lat,
+        lng: req.params.lng,
+        distance: req.params.distance
+    }
+    await dataService.getNearPersonInfo(data, (err, result) => {
+        if (err) console.log(err);
+        if (result) {
+            res.status(200);
+            res.json({ status: true, msg: "Data retrived successfully.", result: result })
+        } else {
+            res.status(500);
+            res.json({ status: false, msg: "Data retrived failed." })
+        }
+    })
+}
+
 module.exports = {
     getDataFromDB: getDataFromDB,
     insertPersonInfo: insertPersonInfo,
+    getUserCount: getUserCount,
     getNearPersonInfo: getNearPersonInfo
 }
