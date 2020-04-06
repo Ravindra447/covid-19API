@@ -104,10 +104,10 @@ const getNearPersonInfo = (data, cb) => {
         .then(result => {
             // console.log(result);
             if (result) {
-                if (result.length === 0)
-                    cb(null, { message: "maxDistance is too small, or your query params {lng, lat} are incorrect (too big or too small)." });
-                else
-                    cb(null, result);
+                // if (result.length === 0)
+                //     cb(null, { message: "maxDistance is too small, or your query params {lng, lat} are incorrect (too big or too small)." });
+                // else
+                cb(null, result);
             }
         })
         // .catch(next);
