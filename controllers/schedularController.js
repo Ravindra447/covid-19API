@@ -7,10 +7,23 @@ const getGlobalData = (state, cb) => {
         else {
             result['findByState'] = state;
             // console.log(result);
-            dataService.InsertData(result, (status, result) => {
-                cb(null, true)
-            })
+            if (state === "global") {
+                console.log(result);
+                result.stats.breakdowns.map(data => {
+                    if (data.location.isoCode === "CA" || data.location.isoCode === "US")
+                        data['isStateLevalData'] = true;
+                    else
+                        data['isStateLevalData'] = false;
 
+                })
+                dataService.InsertData(result, (status, result) => {
+                    cb(null, true)
+                })
+            } else {
+                dataService.InsertData(result, (status, result) => {
+                    cb(null, true)
+                })
+            }
         }
     });
 }

@@ -9,26 +9,34 @@ rule.minute = 1;
 // var j = schedule.scheduleJob('*/2 * * * *', function() {
 var j = schedule.scheduleJob(rule, function() {
     //Sates global CA
-    schedularController.getGlobalData('CA', (err, result) => {
-        console.log('Canada Data updated.');
-
+    schedularController.getGlobalData('global', (err, result) => {
+        console.log('Global Data updated.');
         if (result) {
-            schedularController.getGlobalData('global', (err, result) => {
-                console.log('Global data updated.');
-
+            schedularController.getGlobalData('CA', (err, result) => {
+                console.log('Canada data updated.');
+                if (result) {
+                    schedularController.getGlobalData('US', (err, result) => {
+                        console.log('Us data updated.');
+                    })
+                }
             })
         }
     });
 });
 
 routes.get('/getDatafromCovid-19', (req, res) => {
-    schedularController.getGlobalData('CA', (err, result) => {
-        console.log('Canada Data updated.');
+    schedularController.getGlobalData('global', (err, result) => {
+        console.log('Global Data updated.');
 
         if (result) {
-            schedularController.getGlobalData('global', (err, result) => {
-                console.log('Global data updated.');
-                res.json({ success: true, msg: "Data updated into DB." });
+            schedularController.getGlobalData('CA', (err, result) => {
+                console.log('Canada data updated.');
+                if (result) {
+                    schedularController.getGlobalData('US', (err, result) => {
+                        console.log('US data updated.');
+                        res.json({ success: true, msg: "Data updated into DB." });
+                    })
+                }
             })
         }
     });
