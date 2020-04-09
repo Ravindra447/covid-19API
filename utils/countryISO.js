@@ -1062,3 +1062,12 @@ module.exports.list = [{
         "Name": "Malawi"
     },
 ]
+module.exports.canadaList = [{
+        Name: "Northwest Territories",
+        Code: "CA-NT"
+    },
+    {
+        Name: "Yukon",
+        Code: "CA-YT"
+    }
+]

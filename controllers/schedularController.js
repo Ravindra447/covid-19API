@@ -29,6 +29,15 @@ const getGlobalData = (state, cb) => {
                     cb(null, true)
                 })
             } else {
+                result.stats.breakdowns.map(data => {
+                    if (data.location.isoCode == null) {
+                        var obj = coutryList.canadaList.find(satate => satate.Name == data.location.provinceOrState);
+                        if (obj !== undefined)
+                            data.location.isoCode = obj.Code
+                        else
+                            console.log(data.location);
+                    }
+                })
                 dataService.InsertData(result, (status, result) => {
                     cb(null, true)
                 })
