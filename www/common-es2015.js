@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/framework-delegate-d1eb6504.js":
+/***/ "./node_modules/@ionic/core/dist/esm/framework-delegate-c2e2e1f4.js":
 /*!**************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-d1eb6504.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-c2e2e1f4.js ***!
   \**************************************************************************/
 /*! exports provided: a, d */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -49,9 +49,9 @@ const detachComponent = (delegate, element) => {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/haptic-ccbda579.js":
+/***/ "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js":
 /*!**************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/haptic-ccbda579.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js ***!
   \**************************************************************/
 /*! exports provided: a, b, c, h */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -110,9 +110,226 @@ const hapticSelectionEnd = () => {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/index-729ec402.js":
+/***/ "./node_modules/@ionic/core/dist/esm/index-1469ea79.js":
 /*!*************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/index-729ec402.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/index-1469ea79.js ***!
+  \*************************************************************/
+/*! exports provided: d, g, l, s, t */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return deepReady; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getIonPageElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return lifecycle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return setPageHidden; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return transition; });
+/* harmony import */ var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-0a8d4d2e.js */ "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+/* harmony import */ var _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants-3c3e1099.js */ "./node_modules/@ionic/core/dist/esm/constants-3c3e1099.js");
+
+
+
+const iosTransitionAnimation = () => __webpack_require__.e(/*! import() | ios-transition-b4752795-js */ "ios-transition-b4752795-js").then(__webpack_require__.bind(null, /*! ./ios.transition-b4752795.js */ "./node_modules/@ionic/core/dist/esm/ios.transition-b4752795.js"));
+const mdTransitionAnimation = () => __webpack_require__.e(/*! import() | md-transition-5ee3c425-js */ "md-transition-5ee3c425-js").then(__webpack_require__.bind(null, /*! ./md.transition-5ee3c425.js */ "./node_modules/@ionic/core/dist/esm/md.transition-5ee3c425.js"));
+const transition = (opts) => {
+    return new Promise((resolve, reject) => {
+        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["w"])(() => {
+            beforeTransition(opts);
+            runTransition(opts).then(result => {
+                if (result.animation) {
+                    result.animation.destroy();
+                }
+                afterTransition(opts);
+                resolve(result);
+            }, error => {
+                afterTransition(opts);
+                reject(error);
+            });
+        });
+    });
+};
+const beforeTransition = (opts) => {
+    const enteringEl = opts.enteringEl;
+    const leavingEl = opts.leavingEl;
+    setZIndex(enteringEl, leavingEl, opts.direction);
+    if (opts.showGoBack) {
+        enteringEl.classList.add('can-go-back');
+    }
+    else {
+        enteringEl.classList.remove('can-go-back');
+    }
+    setPageHidden(enteringEl, false);
+    if (leavingEl) {
+        setPageHidden(leavingEl, false);
+    }
+};
+const runTransition = async (opts) => {
+    const animationBuilder = await getAnimationBuilder(opts);
+    const ani = (animationBuilder)
+        ? animation(animationBuilder, opts)
+        : noAnimation(opts); // fast path for no animation
+    return ani;
+};
+const afterTransition = (opts) => {
+    const enteringEl = opts.enteringEl;
+    const leavingEl = opts.leavingEl;
+    enteringEl.classList.remove('ion-page-invisible');
+    if (leavingEl !== undefined) {
+        leavingEl.classList.remove('ion-page-invisible');
+    }
+};
+const getAnimationBuilder = async (opts) => {
+    if (!opts.leavingEl || !opts.animated || opts.duration === 0) {
+        return undefined;
+    }
+    if (opts.animationBuilder) {
+        return opts.animationBuilder;
+    }
+    const getAnimation = (opts.mode === 'ios')
+        ? (await iosTransitionAnimation()).iosTransitionAnimation
+        : (await mdTransitionAnimation()).mdTransitionAnimation;
+    return getAnimation;
+};
+const animation = async (animationBuilder, opts) => {
+    await waitForReady(opts, true);
+    const trans = animationBuilder(opts.baseEl, opts);
+    fireWillEvents(opts.enteringEl, opts.leavingEl);
+    const didComplete = await playTransition(trans, opts);
+    if (opts.progressCallback) {
+        opts.progressCallback(undefined);
+    }
+    if (didComplete) {
+        fireDidEvents(opts.enteringEl, opts.leavingEl);
+    }
+    return {
+        hasCompleted: didComplete,
+        animation: trans
+    };
+};
+const noAnimation = async (opts) => {
+    const enteringEl = opts.enteringEl;
+    const leavingEl = opts.leavingEl;
+    await waitForReady(opts, false);
+    fireWillEvents(enteringEl, leavingEl);
+    fireDidEvents(enteringEl, leavingEl);
+    return {
+        hasCompleted: true
+    };
+};
+const waitForReady = async (opts, defaultDeep) => {
+    const deep = opts.deepWait !== undefined ? opts.deepWait : defaultDeep;
+    const promises = deep ? [
+        deepReady(opts.enteringEl),
+        deepReady(opts.leavingEl),
+    ] : [
+        shallowReady(opts.enteringEl),
+        shallowReady(opts.leavingEl),
+    ];
+    await Promise.all(promises);
+    await notifyViewReady(opts.viewIsReady, opts.enteringEl);
+};
+const notifyViewReady = async (viewIsReady, enteringEl) => {
+    if (viewIsReady) {
+        await viewIsReady(enteringEl);
+    }
+};
+const playTransition = (trans, opts) => {
+    const progressCallback = opts.progressCallback;
+    const promise = new Promise(resolve => {
+        trans.onFinish((currentStep) => resolve(currentStep === 1));
+    });
+    // cool, let's do this, start the transition
+    if (progressCallback) {
+        // this is a swipe to go back, just get the transition progress ready
+        // kick off the swipe animation start
+        trans.progressStart(true);
+        progressCallback(trans);
+    }
+    else {
+        // only the top level transition should actually start "play"
+        // kick it off and let it play through
+        // ******** DOM WRITE ****************
+        trans.play();
+    }
+    // create a callback for when the animation is done
+    return promise;
+};
+const fireWillEvents = (enteringEl, leavingEl) => {
+    lifecycle(leavingEl, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__["b"]);
+    lifecycle(enteringEl, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__["L"]);
+};
+const fireDidEvents = (enteringEl, leavingEl) => {
+    lifecycle(enteringEl, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__["a"]);
+    lifecycle(leavingEl, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_1__["c"]);
+};
+const lifecycle = (el, eventName) => {
+    if (el) {
+        const ev = new CustomEvent(eventName, {
+            bubbles: false,
+            cancelable: false,
+        });
+        el.dispatchEvent(ev);
+    }
+};
+const shallowReady = (el) => {
+    if (el && el.componentOnReady) {
+        return el.componentOnReady();
+    }
+    return Promise.resolve();
+};
+const deepReady = async (el) => {
+    const element = el;
+    if (element) {
+        if (element.componentOnReady != null) {
+            const stencilEl = await element.componentOnReady();
+            if (stencilEl != null) {
+                return;
+            }
+        }
+        await Promise.all(Array.from(element.children).map(deepReady));
+    }
+};
+const setPageHidden = (el, hidden) => {
+    if (hidden) {
+        el.setAttribute('aria-hidden', 'true');
+        el.classList.add('ion-page-hidden');
+    }
+    else {
+        el.hidden = false;
+        el.removeAttribute('aria-hidden');
+        el.classList.remove('ion-page-hidden');
+    }
+};
+const setZIndex = (enteringEl, leavingEl, direction) => {
+    if (enteringEl !== undefined) {
+        enteringEl.style.zIndex = (direction === 'back')
+            ? '99'
+            : '101';
+    }
+    if (leavingEl !== undefined) {
+        leavingEl.style.zIndex = '100';
+    }
+};
+const getIonPageElement = (element) => {
+    if (element.classList.contains('ion-page')) {
+        return element;
+    }
+    const ionPage = element.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs');
+    if (ionPage) {
+        return ionPage;
+    }
+    // idk, return the original element so at least something animates and we don't have a null pointer
+    return element;
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@ionic/core/dist/esm/index-3476b023.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/index-3476b023.js ***!
   \*************************************************************/
 /*! exports provided: s */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -236,9 +453,9 @@ const blockedTags = ['script', 'style', 'iframe', 'meta', 'link', 'object', 'emb
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/spinner-configs-c78e170e.js":
+/***/ "./node_modules/@ionic/core/dist/esm/spinner-configs-28520d80.js":
 /*!***********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/spinner-configs-c78e170e.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/spinner-configs-28520d80.js ***!
   \***********************************************************************/
 /*! exports provided: S */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -360,9 +577,9 @@ const SPINNERS = spinners;
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/theme-c2dc54d9.js":
+/***/ "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js":
 /*!*************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/theme-c2dc54d9.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js ***!
   \*************************************************************/
 /*! exports provided: c, g, h, o */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
