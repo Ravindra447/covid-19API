@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-tabs>\r\n  <ion-tab-bar slot=\"bottom\">\r\n    <ion-tab-button tab=\"tab1\">\r\n      <ion-icon name=\"globe\"></ion-icon>\r\n      <ion-label>Global</ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab2\">\r\n      <ion-icon name=\"flag\"></ion-icon>\r\n      <ion-label>Countries</ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab3\">\r\n      <ion-icon name=\"map\"></ion-icon>\r\n      <ion-label>Nearby</ion-label>\r\n    </ion-tab-button>\r\n  </ion-tab-bar>\r\n</ion-tabs>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-tabs>\r\n    <ion-tab-bar slot=\"bottom\">\r\n        <ion-tab-button tab=\"global\">\r\n            <ion-icon name=\"globe\"></ion-icon>\r\n            <ion-label>Global</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button tab=\"countries\">\r\n            <ion-icon name=\"flag\"></ion-icon>\r\n            <ion-label>Countries</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button tab=\"nearBy\">\r\n            <ion-icon name=\"map\"></ion-icon>\r\n            <ion-label>Nearby</ion-label>\r\n        </ion-tab-button>\r\n    </ion-tab-bar>\r\n</ion-tabs>");
 
 /***/ }),
 
@@ -33,11 +33,16 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: 'tabs',
+        path: '',
+        redirectTo: '/covid-19/global',
+        pathMatch: 'full'
+    },
+    {
+        path: 'covid-19',
         component: _tabs_page__WEBPACK_IMPORTED_MODULE_3__["TabsPage"],
         children: [
             {
-                path: 'tab1',
+                path: 'global',
                 children: [
                     {
                         path: '',
@@ -46,7 +51,7 @@ const routes = [
                 ]
             },
             {
-                path: 'tab2',
+                path: 'countries',
                 children: [
                     {
                         path: '',
@@ -55,25 +60,15 @@ const routes = [
                 ]
             },
             {
-                path: 'tab3',
+                path: 'nearBy',
                 children: [
                     {
                         path: '',
                         loadChildren: () => __webpack_require__.e(/*! import() | tab3-tab3-module */ "tab3-tab3-module").then(__webpack_require__.bind(null, /*! ../tab3/tab3.module */ "./src/app/tab3/tab3.module.ts")).then(m => m.Tab3PageModule)
                     }
                 ]
-            },
-            {
-                path: '',
-                redirectTo: '/tabs/tab1',
-                pathMatch: 'full'
             }
         ]
-    },
-    {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
     }
 ];
 let TabsPageRoutingModule = class TabsPageRoutingModule {
