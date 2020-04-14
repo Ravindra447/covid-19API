@@ -76,7 +76,7 @@
           path: '',
           loadChildren: () => Promise.all(
           /*! import() | tab1-tab1-module */
-          [__webpack_require__.e("default~tab1-tab1-module~tab2-tab2-module"), __webpack_require__.e("tab1-tab1-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~tab1-tab1-module~tab2-tab2-module~tab3-tab3-module"), __webpack_require__.e("default~tab1-tab1-module~tab2-tab2-module"), __webpack_require__.e("tab1-tab1-module")]).then(__webpack_require__.bind(null,
           /*! ../tab1/tab1.module */
           "./src/app/tab1/tab1.module.ts")).then(m => m.Tab1PageModule)
         }]
@@ -86,7 +86,7 @@
           path: '',
           loadChildren: () => Promise.all(
           /*! import() | tab2-tab2-module */
-          [__webpack_require__.e("default~tab1-tab1-module~tab2-tab2-module"), __webpack_require__.e("tab2-tab2-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~tab1-tab1-module~tab2-tab2-module~tab3-tab3-module"), __webpack_require__.e("default~tab1-tab1-module~tab2-tab2-module"), __webpack_require__.e("tab2-tab2-module")]).then(__webpack_require__.bind(null,
           /*! ../tab2/tab2.module */
           "./src/app/tab2/tab2.module.ts")).then(m => m.Tab2PageModule)
         }]
@@ -94,9 +94,9 @@
         path: 'nearBy',
         children: [{
           path: '',
-          loadChildren: () => __webpack_require__.e(
+          loadChildren: () => Promise.all(
           /*! import() | tab3-tab3-module */
-          "tab3-tab3-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~tab1-tab1-module~tab2-tab2-module~tab3-tab3-module"), __webpack_require__.e("tab3-tab3-module")]).then(__webpack_require__.bind(null,
           /*! ../tab3/tab3.module */
           "./src/app/tab3/tab3.module.ts")).then(m => m.Tab3PageModule)
         }]

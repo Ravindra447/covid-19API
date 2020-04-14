@@ -17,6 +17,11 @@ var j = schedule.scheduleJob(rule, function() {
                 if (result) {
                     schedularController.getGlobalData('US', (err, result) => {
                         console.log('Us data updated.');
+                        if (result) {
+                            schedularController.getAllIndiaData((err, result) => {
+                                console.log('IN data updated.');
+                            })
+                        }
                     })
                 }
             })
@@ -37,6 +42,7 @@ routes.get('/InsertCovid-19-GlobalData', (req, res) => {
                         if (result) {
                             schedularController.getAllIndiaData((err, result) => {
                                 console.log('IN data updated.');
+                                res.json({ success: true, msg: "Data updated into DB.", data: result })
                             })
                         }
                     })

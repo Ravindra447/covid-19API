@@ -40987,69 +40987,6 @@ module.exports = function(module) {
 };
 
 
-/***/ }),
-
-/***/ "./src/app/covid.service.ts":
-/*!**********************************!*\
-  !*** ./src/app/covid.service.ts ***!
-  \**********************************/
-/*! exports provided: CovidService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CovidService", function() { return CovidService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-
-
-
-let CovidService = class CovidService {
-    constructor(http) {
-        this.http = http;
-        this.apiUrl1 = 'https://coronavirus-19-api.herokuapp.com/';
-        this.apiUrl2 = 'https://dg-covid-19.herokuapp.com/apis/';
-    }
-    getAll() {
-        return this.http.get(`${this.apiUrl2}getCovidDataByState/global`);
-    }
-    getCountries(state) {
-        return this.http.get(`${this.apiUrl1}getCovidDataByState/${state}`);
-    }
-    getTrackNearMeData(lat, lng) {
-        const httpOptions = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Content-Type': 'application/json',
-            }),
-        };
-        return this.http.get(this.apiUrl2 + `/getNearPersonInfo/${lat}/${lng}/30000`, httpOptions);
-    }
-    getCovidByState(state) {
-        return this.http.get(`${this.apiUrl2}getCovidDataByState/${state}`);
-        // const httpOptions = {
-        //   headers: new HttpHeaders({
-        //     'Content-Type': 'application/json',
-        //   }),
-        // };
-        // return this.http.get(
-        //   this.apiUrl2 + `/getCovidDataByState/${state}`,
-        //   httpOptions
-        // );
-    }
-};
-CovidService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
-CovidService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root',
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], CovidService);
-
-
-
 /***/ })
 
 }]);

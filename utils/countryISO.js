@@ -1128,7 +1128,7 @@ module.exports.indiaList = [{
     },
     {
         Name: "Karnataka",
-        Code: "IN-kA",
+        Code: "IN-KA",
         lat: "",
         long: ""
     },

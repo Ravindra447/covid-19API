@@ -55719,70 +55719,7 @@ class MatTreeNestedDataSource extends _angular_cdk_collections__WEBPACK_IMPORTED
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n    <ion-toolbar>\r\n        <ion-title>\r\n            <img src=\"../assets/icon/carona.png\" alt=\"Smiley face\" height=\"42\" width=\"42\">&nbsp;&nbsp;&nbsp; Nearby\r\n        </ion-title>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n    <ion-header collapse=\"condense\">\r\n        <ion-toolbar>\r\n            <ion-title size=\"large\"><img src=\"../assets/icon/carona.png\" alt=\"Smiley face\" height=\"42\" width=\"42\">&nbsp;&nbsp;&nbsp;Nearby</ion-title>\r\n        </ion-toolbar>\r\n    </ion-header>\r\n\r\n    <ion-grid style=\"margin: 15px;\">\r\n        <ion-row>\r\n            <ion-col size-md=\"4\" size-sm=\"4\" size-xs=\"12\">\r\n                <ion-row>\r\n                    <ion-col size-xs=\"12\">\r\n                        <h4>\r\n                            Nearby Cases : {{NearCaseCount}}\r\n                        </h4>\r\n                    </ion-col>\r\n                    <ion-col size-xs=\"12\">\r\n                        <h6 style=\"color:red;\" *ngIf=\"NearCaseCount!=0\">\r\n                            Approximately <b>{{NearestDistance}} KM </b> away from nearest confirmed case.\r\n                        </h6>\r\n                        <h6 style=\"color:red;\" *ngIf=\"NearCaseCount==0\">\r\n                            No confirmed case near to You.\r\n                        </h6>\r\n                    </ion-col>\r\n                    <ion-col size-xs=\"12\">\r\n                        <!-- <div class=\"form-group\"> -->\r\n                        <input type=\"text\" class=\"form-control\" style=\"color: black;\" [(ngModel)]=\"searchValue\" (ngModelChange)=\"checkSearchText()\" (keydown.enter)=\"$event.preventDefault()\" placeholder=\"Search By Location\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"off\"\r\n                            type=\"text\" #search>\r\n                        <!-- </div> -->\r\n                    </ion-col>\r\n                </ion-row>\r\n            </ion-col>\r\n            <ion-col size-md=\"8\" size-sm=\"8\" size-xs=\"12\">\r\n\r\n                <agm-map [latitude]=\"latitude\" gestureHandling=\"cooperative\" [longitude]=\"longitude\" [minZoom]=\"minZoom\" [scrollwheel]=\"false\" [zoom]=\"zoom\">\r\n\r\n                    <ng-container *ngFor=\"let m of markers; let i = index\">\r\n                        <!-- [label]=\"m.label\" (markerClick)=\"clickedMarker(m.label, i)\"  [isOpen]=\"true\"-->\r\n                        <agm-marker [latitude]=\"m.lat\" [longitude]=\"m.lng\" [iconUrl]=\"m.icon\">\r\n\r\n                            <agm-info-window *ngIf=\"m.distance!=undefined\">\r\n                                <div>No Of Cases - {{m.count}}</div>\r\n\r\n                                <div>Distance - {{m.content}}</div>\r\n                            </agm-info-window>\r\n\r\n                        </agm-marker>\r\n\r\n                    </ng-container>\r\n\r\n                </agm-map>\r\n            </ion-col>\r\n\r\n        </ion-row>\r\n\r\n    </ion-grid>\r\n</ion-content>");
-
-/***/ }),
-
-/***/ "./src/app/covid.service.ts":
-/*!**********************************!*\
-  !*** ./src/app/covid.service.ts ***!
-  \**********************************/
-/*! exports provided: CovidService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CovidService", function() { return CovidService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-
-
-
-let CovidService = class CovidService {
-    constructor(http) {
-        this.http = http;
-        this.apiUrl1 = 'https://coronavirus-19-api.herokuapp.com/';
-        this.apiUrl2 = 'https://dg-covid-19.herokuapp.com/apis/';
-    }
-    getAll() {
-        return this.http.get(`${this.apiUrl2}getCovidDataByState/global`);
-    }
-    getCountries(state) {
-        return this.http.get(`${this.apiUrl1}getCovidDataByState/${state}`);
-    }
-    getTrackNearMeData(lat, lng) {
-        const httpOptions = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Content-Type': 'application/json',
-            }),
-        };
-        return this.http.get(this.apiUrl2 + `/getNearPersonInfo/${lat}/${lng}/30000`, httpOptions);
-    }
-    getCovidByState(state) {
-        return this.http.get(`${this.apiUrl2}getCovidDataByState/${state}`);
-        // const httpOptions = {
-        //   headers: new HttpHeaders({
-        //     'Content-Type': 'application/json',
-        //   }),
-        // };
-        // return this.http.get(
-        //   this.apiUrl2 + `/getCovidDataByState/${state}`,
-        //   httpOptions
-        // );
-    }
-};
-CovidService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
-CovidService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root',
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], CovidService);
-
-
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n    <ion-toolbar>\r\n        <ion-title>\r\n            <img src=\"../assets/icon/carona.png\" alt=\"Smiley face\" height=\"42\" width=\"42\">&nbsp;&nbsp;&nbsp; Nearby\r\n        </ion-title>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n    <ion-header collapse=\"condense\">\r\n        <ion-toolbar>\r\n            <ion-title size=\"large\"><img src=\"../assets/icon/carona.png\" alt=\"Smiley face\" height=\"42\" width=\"42\">&nbsp;&nbsp;&nbsp;Nearby</ion-title>\r\n        </ion-toolbar>\r\n    </ion-header>\r\n\r\n    <ion-grid style=\"margin: 15px;\">\r\n        <ion-row>\r\n            <ion-col size-md=\"4\" size-sm=\"4\" size-xs=\"12\">\r\n                <ion-row>\r\n                    <ion-col size-xs=\"12\">\r\n                        <h4>\r\n                            Nearby Cases : {{NearCaseCount}}\r\n                        </h4>\r\n                    </ion-col>\r\n                    <ion-col size-xs=\"12\">\r\n                        <h6 style=\"color:red;\" *ngIf=\"NearCaseCount!=0\">\r\n                            Approximately <b>{{NearestDistance}} KM </b> away from nearest confirmed case.\r\n                        </h6>\r\n                        <h6 style=\"color:red;\" *ngIf=\"NearCaseCount==0\">\r\n                            No confirmed case near to You.\r\n                        </h6>\r\n                    </ion-col>\r\n                    <ion-col size-xs=\"12\">\r\n                        <!-- <div class=\"form-group\"> -->\r\n                        <input type=\"text\" class=\"form-control\" style=\"color: black;\" [(ngModel)]=\"searchValue\" (ngModelChange)=\"checkSearchText()\" (keydown.enter)=\"$event.preventDefault()\" placeholder=\"Search By Location\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"off\"\r\n                            type=\"text\" #search>\r\n                        <!-- </div> -->\r\n                    </ion-col>\r\n                </ion-row>\r\n            </ion-col>\r\n            <ion-col size-md=\"8\" size-sm=\"8\" size-xs=\"12\">\r\n\r\n                <agm-map [latitude]=\"latitude\" gestureHandling=\"cooperative\" [longitude]=\"longitude\" [minZoom]=\"minZoom\" [scrollwheel]=\"false\" [zoom]=\"zoom\">\r\n\r\n                    <ng-container *ngFor=\"let m of markers; let i = index\">\r\n                        <!-- [label]=\"m.label\" (markerClick)=\"clickedMarker(m.label, i)\"  [isOpen]=\"true\"-->\r\n                        <agm-marker [latitude]=\"m.lat\" [longitude]=\"m.lng\" [iconUrl]=\"m.icon\">\r\n\r\n                            <agm-info-window *ngIf=\"m.distance!=undefined\">\r\n                                <div>No Of Cases - {{m.count}}</div>\r\n\r\n                                <div>Distance - {{m.content}}</div>\r\n                            </agm-info-window>\r\n\r\n                        </agm-marker>\r\n\r\n                    </ng-container>\r\n\r\n                </agm-map>\r\n            </ion-col>\r\n\r\n        </ion-row>\r\n\r\n    </ion-grid>\r\n</ion-content>\r\n<ngx-spinner bdColor=\"rgba(0, 0, 0, 0.8)\" size=\"default\" color=\"#fff\" type=\"ball-clip-rotate-multiple\" [fullScreen]=\"true\">\r\n    <p style=\"color: white\"> Loading... </p>\r\n</ngx-spinner>");
 
 /***/ }),
 
@@ -55805,6 +55742,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tab3_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tab3.page */ "./src/app/tab3/tab3.page.ts");
 /* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/fesm2015/agm-core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm2015/ngx-spinner.js");
+
 
 
 
@@ -55826,7 +55765,7 @@ Tab3PageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 apiKey: 'AIzaSyA50lL8jt2R_R_8A-zamt9HNv6jZFwGj60',
                 libraries: ['places']
             }),
-            _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatIconModule"], _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatIconModule"], _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatButtonModule"], ngx_spinner__WEBPACK_IMPORTED_MODULE_9__["NgxSpinnerModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{ path: '', component: _tab3_page__WEBPACK_IMPORTED_MODULE_6__["Tab3Page"] }])
         ],
         declarations: [_tab3_page__WEBPACK_IMPORTED_MODULE_6__["Tab3Page"]]
@@ -55864,15 +55803,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _covid_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../covid.service */ "./src/app/covid.service.ts");
 /* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/fesm2015/agm-core.js");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm2015/ngx-spinner.js");
+
 
 
 
 
 let Tab3Page = class Tab3Page {
-    constructor(apiService, mapsAPILoader, ngZone) {
+    constructor(apiService, mapsAPILoader, ngZone, spinner) {
         this.apiService = apiService;
         this.mapsAPILoader = mapsAPILoader;
         this.ngZone = ngZone;
+        this.spinner = spinner;
         this.title = 'AGM project';
         this.markers = [];
     }
@@ -55917,8 +55859,10 @@ let Tab3Page = class Tab3Page {
         this.NearCaseCount = 0;
         this.zoom = 12;
         this.minZoom = 3;
+        this.spinner.show();
         this.apiService.getTrackNearMeData(this.latitude, this.longitude).subscribe((data) => {
             if (data.status) {
+                this.spinner.hide();
                 this.TrackedData = data.result;
                 this.NearCaseCount = this.TrackedData.length;
                 // console.log(this.NearCaseCount);
@@ -55984,7 +55928,8 @@ let Tab3Page = class Tab3Page {
 Tab3Page.ctorParameters = () => [
     { type: _covid_service__WEBPACK_IMPORTED_MODULE_2__["CovidService"] },
     { type: _agm_core__WEBPACK_IMPORTED_MODULE_3__["MapsAPILoader"] },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
+    { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerService"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('search', null),
@@ -55997,7 +55942,7 @@ Tab3Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./tab3.page.scss */ "./src/app/tab3/tab3.page.scss")).default]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_covid_service__WEBPACK_IMPORTED_MODULE_2__["CovidService"], _agm_core__WEBPACK_IMPORTED_MODULE_3__["MapsAPILoader"],
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"], ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerService"]])
 ], Tab3Page);
 
 
