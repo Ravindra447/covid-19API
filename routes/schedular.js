@@ -24,7 +24,7 @@ var j = schedule.scheduleJob(rule, function() {
     });
 });
 
-routes.get('/getDatafromCovid-19', (req, res) => {
+routes.get('/InsertCovid-19-GlobalData', (req, res) => {
     schedularController.getGlobalData('global', (err, result) => {
         console.log('Global Data updated.');
 
@@ -34,12 +34,21 @@ routes.get('/getDatafromCovid-19', (req, res) => {
                 if (result) {
                     schedularController.getGlobalData('US', (err, result) => {
                         console.log('US data updated.');
-                        res.json({ success: true, msg: "Data updated into DB." });
+                        if (result) {
+                            schedularController.getAllIndiaData((err, result) => {
+                                console.log('IN data updated.');
+                            })
+                        }
                     })
                 }
             })
         }
     });
+})
+routes.get('/InsertCovid-19-INData', (req, res) => {
+    schedularController.getAllIndiaData((err, result) => {
+        res.json({ success: true, msg: "Data updated into DB.", data: result })
+    })
 })
 
 

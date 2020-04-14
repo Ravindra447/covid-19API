@@ -1071,3 +1071,233 @@ module.exports.canadaList = [{
         Code: "CA-YT"
     }
 ]
+module.exports.indiaList = [{
+        Name: "Andhra Pradesh",
+        Code: "IN-AP",
+        lat: "",
+        long: ""
+
+    },
+    {
+        Name: "Arunachal Pradesh",
+        Code: "IN-AR",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Assam",
+        Code: "IN-AS",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Bihar",
+        Code: "IN-BR",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Goa",
+        Code: "IN-GA",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Gujarat",
+        Code: "IN-GJ",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Haryana",
+        Code: "IN-HR",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Himachal Pradesh",
+        Code: "IN-HP",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Jammu and Kashmir",
+        Code: "IN-JK",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Karnataka",
+        Code: "IN-kA",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Kerala",
+        Code: "IN-KL",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Madhya Pradesh",
+        Code: "IN-MP",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Maharashtra",
+        Code: "IN-MH",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Manipur",
+        Code: "IN-MN",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Meghalaya",
+        Code: "IN-ML",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Mizoram",
+        Code: "IN-MZ",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Nagaland",
+        Code: "IN-NL",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Odisha",
+        Code: "IN-OR",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Punjab",
+        Code: "IN-PB",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Rajasthan",
+        Code: "IN-RJ",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Sikkim",
+        Code: "IN-SK",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Tamil Nadu",
+        Code: "IN-TN",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Tripura",
+        Code: "IN-TR",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Uttar Pradesh",
+        Code: "IN-UP",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "West Bengal",
+        Code: "IN-WB",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Andaman and Nicobar Islands",
+        Code: "IN-AN",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Chandigarh",
+        Code: "IN-CH",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Dadra and Nagar Haveli",
+        Code: "IN-DN",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Daman and Diu",
+        Code: "IN-DD",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Delhi",
+        Code: "IN-DL",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Lakshadweep",
+        Code: "IN-LD",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Pondicherry",
+        Code: "IN-PY",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Uttarakhand",
+        Code: "IN-UT",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Chhattisgarh",
+        Code: "IN-CT",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Jharkhand",
+        Code: "IN-JH",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Ladakh",
+        Code: "IN-LA",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Puducherry",
+        Code: "IN-PY",
+        lat: "",
+        long: ""
+    },
+    {
+        Name: "Telangana",
+        Code: "IN-TG",
+        lat: "",
+        long: ""
+    }
+]

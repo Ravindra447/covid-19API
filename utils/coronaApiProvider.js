@@ -18,7 +18,18 @@ const allGlobal = (state, cb) => {
             cb(null, response.data)
         });
 }
+const getIndiaData = (cb) => {
+    axios({
+            method: 'get',
+            url: 'https://api.covid19india.org/data.json',
+        })
+        .then(function(response) {
+            // console.log(response);
+            cb(null, response.data)
+        });
+}
 
 module.exports = {
-    allGlobal: allGlobal
+    allGlobal: allGlobal,
+    getIndiaData: getIndiaData
 }
