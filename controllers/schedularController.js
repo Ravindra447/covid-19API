@@ -81,28 +81,31 @@ const getAllIndiaData = (cb) => {
                     "newDeaths": element.deltadeaths,
                     "totalRecoveredCases": element.recovered,
                     "newlyRecoveredCases": element.deltarecovered,
-                    "activeCases": element.active
+                    "activeCases": element.active,
+                    "lastupdatedtime": element.lastupdatedtime
                 })
             });
-            var totalIndia = breakdowns.find(country => country.location.provinceOrState == "Total")
-            result['updatedDateTime'] = moment(totalIndia.lastupdatedtime).format();
+            // var totalIndia = breakdowns.find(country => country.location.provinceOrState == "Total");
+            // console.log(breakdowns[0]);
+            // console.log(breakdowns[0].lastupdatedtime.substr(0, 10));
+            result['updatedDateTime'] = moment().format();
             result['stats'] = {
                 history: history,
                 breakdowns: breakdowns,
-                totalConfirmedCases: totalIndia.confirmed,
-                newlyConfirmedCases: totalIndia.deltaconfirmed,
-                totalDeaths: totalIndia.deaths,
-                newDeaths: totalIndia.deltadeaths,
-                totalRecoveredCases: totalIndia.recovered,
-                newlyRecoveredCases: totalIndia.deltarecovered,
+                totalConfirmedCases: breakdowns[0].totalConfirmedCases,
+                newlyConfirmedCases: breakdowns[0].newlyConfirmedCases,
+                totalDeaths: breakdowns[0].totalDeaths,
+                newDeaths: breakdowns[0].newDeaths,
+                totalRecoveredCases: breakdowns[0].totalRecoveredCases,
+                newlyRecoveredCases: breakdowns[0].newlyRecoveredCases,
             }
             result["location"] = {
-                "long": 20.5937,
+                "long": 78,
                 "countryOrRegion": "India",
                 "provinceOrState": null,
                 "county": null,
                 "isoCode": "IN",
-                "lat": 56.130366
+                "lat": 21
             }
 
             // console.log(result.cases_time_series.length, history.length, coutryList.indiaList.length, breakdowns.length)
