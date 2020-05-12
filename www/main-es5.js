@@ -1096,6 +1096,11 @@
 
     if (_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].production) {
       Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["enableProdMode"])();
+
+      if (window) {
+        //change console to empty function
+        window.console.log = function () {};
+      }
     }
 
     Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_4__["AppModule"]).catch(err => console.log(err));
